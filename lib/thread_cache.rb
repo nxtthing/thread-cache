@@ -12,6 +12,7 @@ module ThreadCache
   end
 
   def fetch_key(key)
+    clear unless ::Thread.current.key?(KEY)
     ::Thread.current[KEY][key] ||= {}
   end
 end
